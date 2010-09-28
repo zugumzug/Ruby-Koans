@@ -29,7 +29,7 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 #
 # Your goal is to write the score method.
 
-def score(dice)
+def score_by_luke(dice)
   # You need to write this method
   dice = dice.delete_if {|x| 1 > x or x > 6}
   dice = dice.slice!(0..4)
@@ -42,21 +42,21 @@ def score(dice)
   sixes = dice.select {|x| x == 6}
   
   score = 0
-=begin  
+
   case ones
   when ones.length < 3 then score += ones.length*100
   when ones.length == 3 then score += 1000
   when ones.length == 4 then score += 1100
   when ones.length == 5 then score += 1200
   end
-=end  
+ 
   case fives.length
   when fives.length < 3 then score += fives.length*50
   when fives.length == 3 then score += 500
   when fives.length == 4 then score += 550
   when fives.length == 5 then score += 600
   end
-=begin  
+  
   everyoneelse = [twos.length, threes.length, fours.length, sixes.length]
   
   case everyoneelse
@@ -65,8 +65,8 @@ def score(dice)
   when everyoneelse[2] >= 3 then score += 400
   when everyoneelse[3] >= 3 then score += 600
   end
-=end  
-  return fives[0]
+
+  return score
 end
 def score_naive(dice)
   score = 0
