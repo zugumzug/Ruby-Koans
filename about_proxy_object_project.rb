@@ -14,8 +14,22 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 
 class Proxy
   def initialize(target_object)
+    attr_accessor :messages
+    @messages = []
     @object = target_object
-    # ADD MORE CODE HERE
+  end
+  
+  def method_missing(method_name, *args)
+    @messages.push(method_name)
+    @object.__send__(method_name, *args)
+  end
+  
+  def called?(method)
+    @messages.include?(method)
+  end
+  
+  def number_of_times_called(method)
+    @messages.count(method)
   end
 
   # WRITE CODE HERE
