@@ -43,20 +43,22 @@ def score_by_luke(dice)
   
   score = 0
 
-  case ones
-  when ones.length < 3 then score += ones.length*100
-  when ones.length == 3 then score += 1000
-  when ones.length == 4 then score += 1100
-  when ones.length == 5 then score += 1200
+  case ones.length
+  when 3 then score += 1000
+  when 4 then score += 1100
+  when 5 then score += 1200
+  else 
+    score += ones.length*100
   end
  
   case fives.length
-  when fives.length < 3 then score += fives.length*50
-  when fives.length == 3 then score += 500
-  when fives.length == 4 then score += 550
-  when fives.length == 5 then score += 600
+  when 3 then score += 500
+  when 4 then score += 550
+  when 5 then score += 600
+  else 
+    score += fives.length*50
   end
-  
+=begin #code below does not work, needs to be rewritten with iteration
   everyoneelse = [twos.length, threes.length, fours.length, sixes.length]
   
   case everyoneelse
@@ -65,8 +67,8 @@ def score_by_luke(dice)
   when everyoneelse[2] >= 3 then score += 400
   when everyoneelse[3] >= 3 then score += 600
   end
-
-  return score
+=end
+  score
 end
 def score_naive(dice)
   score = 0
@@ -104,7 +106,7 @@ def score_naive(dice)
   score
 end
 
-def score_hash(dice)
+def score(dice)
   score = 0
   dice = dice.delete_if {|x| 1 > x or x > 6}	
   dice = dice.slice(0..4)

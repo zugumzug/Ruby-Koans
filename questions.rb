@@ -6,7 +6,6 @@
 
  # ------------------------------------------------------------------
 
-# Re-read about_regular_expressions. Muy obfuscato.
 # About Constants is confusing, ask about this.
 # About Exceptions is confusing. Re-read.
 
